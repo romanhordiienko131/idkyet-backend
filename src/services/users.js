@@ -6,6 +6,12 @@ import { ONE_DAY, ONE_HOUR } from '../constants/index.js';
 import { SessionsCollection } from '../db/models/session.js';
 
 export const registerUser = async ({ email, password }) => {
+  const user = await UsersCollection.findOne({ email });
+
+  if (user) {
+    throw createHttpError(409, 'Email in use');
+  }
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   return await UsersCollection.create({
