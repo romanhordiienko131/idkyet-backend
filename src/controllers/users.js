@@ -39,7 +39,7 @@ export const loginUserController = async (req, res) => {
     password: req.body.password,
   };
 
-  const session = await loginUser(credentials);
+  const { session, user } = await loginUser(credentials);
 
   setupSession(res, session);
 
@@ -48,6 +48,7 @@ export const loginUserController = async (req, res) => {
     message: 'Successfully logged in a user!',
     data: {
       accessToken: session.accessToken,
+      user,
     },
   });
 };

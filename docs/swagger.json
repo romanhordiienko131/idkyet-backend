@@ -201,12 +201,16 @@
                     "data": {
                       "type": "object",
                       "required": [
-                        "accessToken"
+                        "accessToken",
+                        "user"
                       ],
                       "properties": {
                         "accessToken": {
                           "type": "string",
                           "example": "Qu469Tkd8Y2mAPIBo96le7ODiupGgjYI+2D2FBOO"
+                        },
+                        "user": {
+                          "$ref": "#/components/schemas/user"
                         }
                       }
                     }

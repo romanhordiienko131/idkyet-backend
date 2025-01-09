@@ -52,10 +52,13 @@ responses:
               type: object
               required:
                 - accessToken
+                - user
               properties:
                 accessToken:
                   type: string
                   example: Qu469Tkd8Y2mAPIBo96le7ODiupGgjYI+2D2FBOO
+                user:
+                  $ref: ../../../components/schemas/user.yaml
   '401':
     description: Invalid credentials
     content:
