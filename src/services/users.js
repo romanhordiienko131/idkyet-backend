@@ -52,10 +52,15 @@ export const loginUser = async ({ email, password }) => {
 
   const session = createSession();
 
-  return await SessionsCollection.create({
+  const newSession = await SessionsCollection.create({
     userId: user._id,
     ...session,
   });
+
+  return {
+    session: newSession,
+    user,
+  };
 };
 
 export const logoutUser = async (user) => {
