@@ -1,0 +1,12 @@
+tags:
+  - Users
+operationId: logoutUser
+summary: User Logout
+description: Logs out the authenticated user by invalidating their bearer token. A 204 No Content response is returned upon successful logout. If the token is invalid or expired, a 401 Unauthorized error is returned.
+security:
+  - bearerAuth: []
+responses:
+  '204':
+    description: Successfully logged out the user
+  '401':
+    $ref: ../../../components/responses/401.yaml

@@ -1,0 +1,29 @@
+tags:
+  - Users
+operationId: getCurrentUser
+summary: Retrieve the Current User
+description: Fetches information about the currently authenticated user. On success, a 200 status code is returned with user details; otherwise, a 401 status code indicates unauthorized access.
+security:
+  - bearerAuth: []
+responses:
+  '200':
+    description: Retrieved user successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully retrieved the current user!
+            data:
+              $ref: ../../../components/schemas/user.yaml
+  '401':
+    $ref: ../../../components/responses/401.yaml
