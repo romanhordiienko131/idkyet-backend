@@ -12,7 +12,6 @@ export const loginUserSchema = Joi.object({
 });
 
 export const updateUserSchema = Joi.object({
-  avatarUrl: Joi.string(),
   name: Joi.string(),
   gender: Joi.string().valid('woman', 'man'),
   weight: Joi.number(),

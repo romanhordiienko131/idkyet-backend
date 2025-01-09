@@ -1,0 +1,87 @@
+tags:
+  - Users
+operationId: updateUser
+summary: Update User Account Information
+description: Updates a user's account details, including name, gender, weight, active time in sports, and daily water intake. Returns a confirmation message and updated user data upon success, or a 401 Unauthorized error if access is denied.
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            description: User's name
+            type: string
+            example: 'John Doe'
+          gender:
+            description: User's gender
+            type: string
+            enum: ['woman', 'man']
+            example: man
+          weight:
+            description: User's weight (in kilograms)
+            type: number
+            example: 80
+          activeTime:
+            description: User's time of active participation in sports (in hours)
+            type: number
+            example: 1
+          dailyNorm:
+            description: User's daily norm of water intake (in milliliters)
+            type: number
+            example: 3000
+responses:
+  '200':
+    description: Successfully updated a user
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully updated a user!'
+            data:
+              type: object
+              properties:
+                _id:
+                  description: User's id (automatically generated)
+                  type: string
+                  example: 677eb7405c84945af390b81f
+                email:
+                  description: User's email
+                  type: string
+                  example: john.doe@example.com
+                name:
+                  description: Users' name
+                  type: string
+                  example: john Doe
+                gender:
+                  description: User's gender
+                  type: string
+                  enum: [woman, man]
+                  example: man
+                weight:
+                  description: User's weight (in kilograms)
+                  type: number
+                  example: 80
+                activeTime:
+                  description: User's time of active participation in sports (in hours)
+                  type: number
+                  example: 1
+                dailyNorm:
+                  description: User's daily norm of water intake (in milliliters)
+                  type: number
+                  example: 3000
+
+  '401':
+    $ref: ../../../components/responses/401.yaml

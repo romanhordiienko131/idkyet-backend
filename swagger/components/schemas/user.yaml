@@ -1,0 +1,38 @@
+type: object
+required:
+  - email
+properties:
+  _id:
+    description: User's id (automatically generated)
+    type: string
+    example: 677eb7405c84945af390b81f
+  email:
+    description: User's email
+    type: string
+    example: john.doe@example.com
+  name:
+    description: Users' name
+    type: string
+    example: john.doe
+    default: Local part of email address
+  gender:
+    description: User's gender
+    type: string
+    enum: [woman, man]
+    example: woman
+    default: woman
+  weight:
+    description: User's weight (in kilograms)
+    type: number
+    example: 0
+    default: 0
+  activeTime:
+    description: User's time of active participation in sports (in hours)
+    type: number
+    example: 0
+    default: 0
+  dailyNorm:
+    description: User's daily norm of water intake (in milliliters)
+    type: number
+    example: 1500
+    default: 1500

@@ -11,11 +11,11 @@ const usersSchema = new Schema(
       type: String,
       required: true,
     },
-    avatarUrl: {
+    name: {
       type: String,
       required: false,
     },
-    name: {
+    avatarUrl: {
       type: String,
       required: false,
     },

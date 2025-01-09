@@ -41,8 +41,6 @@ export const loginUserController = async (req, res) => {
 
   const session = await loginUser(credentials);
 
-  console.log('SESSION: ', session);
-
   setupSession(res, session);
 
   res.status(200).json({
