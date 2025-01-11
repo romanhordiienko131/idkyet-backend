@@ -32,6 +32,20 @@ paths:
   /users/update:
     patch:
       $ref: ../swagger/paths/users/update/patch.yaml
+  /water:
+    post:
+      $ref: ../swagger/paths/water/post.yaml
+  /water/{waterId}:
+    patch:
+      $ref: ../swagger/paths/water/{waterId}/patch.yaml
+    delete:
+      $ref: ../swagger/paths/water/{waterId}/delete.yaml
+  /water/day/{date}:
+    get:
+      $ref: ../swagger/paths/water/day/get.yaml
+  /water/month/{date}:
+    get:
+      $ref: ../swagger/paths/water/month/get.yaml
 components:
   securitySchemes:
     bearerAuth:
