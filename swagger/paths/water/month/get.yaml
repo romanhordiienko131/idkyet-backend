@@ -1,0 +1,72 @@
+tags:
+  - Water
+summary: Get a water consumption by month
+operationId: getWaterByMonth
+description: 'Get a water consumption by month'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: date
+    required: true
+    schema:
+      type: string
+      example: '2025-01'
+    description: 'The date in format YYYY-MM'
+responses:
+  '200':
+    description: 'Get water consumption by month'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully found a water consumption by month'
+            data:
+              type: array
+              items:
+                example:
+                  _id: '677ef8ffd965e35fbbcc5121'
+                  date: '2025-01-08T22:21'
+                  volume: 50
+                  userId: '677ef8ffd965e35fbbcc5121'
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    description: Not Found error
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 404
+            message:
+              type: string
+              example: NotFoundError
+            data:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  example: 'Water consumption by month not found'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

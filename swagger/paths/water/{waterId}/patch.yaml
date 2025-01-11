@@ -1,0 +1,57 @@
+tags:
+  - Water
+summary: Update a water consumption
+operationId: updateWater
+description: 'Update a water consumption with payload'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: waterId
+    required: true
+    schema:
+      type: string
+      example: '677ef8ffd965e35fbbcc5121'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          date:
+            description: 'New date for water consumption'
+            type: string
+            example: '2025-01-08T22:21'
+          volume:
+            description: 'New volume of water'
+            type: number
+            example: 100
+responses:
+  '200':
+    description: 'Water consumption updated'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully updated water consumption!'
+            data:
+              type: object
+              $ref: '../../../components/schemas/water.yaml'
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

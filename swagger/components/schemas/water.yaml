@@ -1,0 +1,31 @@
+type: object
+required:
+  - _id
+  - date
+  - volume
+  - userId
+properties:
+  _id:
+    description: "Water's id"
+    type: string
+    example: '677ef8ffd965e35fbbcc5121'
+  date:
+    description: "Water's date"
+    type: string
+    example: '2025-01-08T22:21'
+  volume:
+    description: "Water's volume. Should be minimum 50"
+    type: number
+    example: 50
+  userId:
+    description: "Water's user id"
+    type: string
+    example: '677ef8ffd965e35fbbcc5121'
+  createdAt:
+    description: 'The date and time when the water consumption was created'
+    type: string
+    example: '2025-01-08T22:21:36Z'
+  updatedAt:
+    description: 'The date and time when the water consumption information was last updated'
+    type: string
+    example: '2025-01-09T12:10:00Z'
