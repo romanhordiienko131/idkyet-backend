@@ -34,11 +34,10 @@ responses:
             data:
               type: array
               items:
+                type: object
                 example:
-                  _id: '677ef8ffd965e35fbbcc5121'
-                  date: '2025-01-08T22:21'
-                  volume: 50
-                  userId: '677ef8ffd965e35fbbcc5121'
+                  date: '2025-01-08'
+                  waterPercentage: 50
   '400':
     $ref: '../../../components/responses/400.yaml'
   '401':

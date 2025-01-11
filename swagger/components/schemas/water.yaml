@@ -6,19 +6,19 @@ required:
   - userId
 properties:
   _id:
-    description: "Water's id"
+    description: 'Water consumption record id'
     type: string
     example: '677ef8ffd965e35fbbcc5121'
   date:
-    description: "Water's date"
+    description: 'Water consumption date. Must be in the format YYYY-MM-DDTHH:mm'
     type: string
     example: '2025-01-08T22:21'
   volume:
-    description: "Water's volume. Should be minimum 50"
+    description: 'Volume of water consumed in ml. Should be minimum 50 and maximum 5000'
     type: number
     example: 50
   userId:
-    description: "Water's user id"
+    description: 'Water consumption user id'
     type: string
     example: '677ef8ffd965e35fbbcc5121'
   createdAt:
