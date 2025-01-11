@@ -13,15 +13,20 @@ requestBody:
         required:
           - date
           - volume
+          - userId
         properties:
           date:
             description: 'Date of creating a water consumption'
             type: string
             example: '2025-01-08T22:21'
           volume:
-            description: "Water's volume"
+            description: 'Water consumption volume'
             type: number
             example: 50
+          userId:
+            description: 'Water consumption user id'
+            type: string
+            example: '677ef8ffd965e35fbbcc5121'
 responses:
   '201':
     description: 'Water consumption created'

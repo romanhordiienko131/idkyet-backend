@@ -3,11 +3,12 @@ import {
   createWaterConsumption,
   deleteWaterConsumption,
   getWaterByDay,
+  getWaterByMonth,
   updateWaterConsumption,
 } from '../services/water.js';
 import { calculateWaterPercentage } from '../utils/calculateWaterPercentage.js';
 
-export const getWaterByDayController = async (req, res, next) => {
+export const getWaterByDayController = async (req, res) => {
   const { date } = req.params;
   const { _id: userId } = req.user;
   const dailyNorm = req.user.dailyNorm;
@@ -18,8 +19,8 @@ export const getWaterByDayController = async (req, res, next) => {
 
   const waterPercentage = calculateWaterPercentage(dailyNorm, totalWaterPerDay);
 
-  if (!water) {
-    next(createHttpError(404, 'Water consumption by day not found'));
+  if (!water || !totalWaterPerDay) {
+    throw createHttpError(404, 'Water consumption by day not found');
   }
 
   res.send({
@@ -34,17 +35,35 @@ export const getWaterByDayController = async (req, res, next) => {
 export const getWaterByMonthController = async (req, res) => {
   const { date } = req.params;
   const { _id: userId } = req.user;
+  const dailyNorm = req.user.dailyNorm;
 
-  const water = await getWaterByDay(date, userId);
+  const water = await getWaterByMonth(date, userId);
 
-  if (!water) {
+  const dailyWater = {};
+
+  water.forEach((item) => {
+    const day = item.date.split('T')[0];
+
+    if (!dailyWater[day]) {
+      dailyWater[day] = 0;
+    }
+
+    dailyWater[day] += item.volume;
+  });
+
+  const result = Object.keys(dailyWater).map((day) => ({
+    date: day,
+    waterPercentage: ((dailyWater[day] / dailyNorm) * 100).toFixed(),
+  }));
+
+  if (!water || result.length === 0) {
     throw createHttpError(404, 'Water consumption by month not found');
   }
 
   res.send({
     status: 200,
     message: 'Successfully found a water consumption by month!',
-    data: water,
+    data: result,
   });
 };
 
