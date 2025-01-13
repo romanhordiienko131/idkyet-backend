@@ -6,7 +6,7 @@ required:
   - userId
 properties:
   _id:
-    description: 'Water consumption record id'
+    description: 'Backend-generated unique id'
     type: string
     example: '677ef8ffd965e35fbbcc5121'
   date:

@@ -8,7 +8,6 @@ export const createWaterSchema = Joi.object({
       'string.pattern.base': 'Date must be in the format YYYY-MM-DDTHH:mm',
     }),
   volume: Joi.number().min(50).max(5000).required(),
-  userId: Joi.string().required(),
 });
 
 export const updateWaterSchema = Joi.object({
