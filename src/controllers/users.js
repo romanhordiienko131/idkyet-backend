@@ -1,5 +1,6 @@
 import { ONE_DAY } from '../constants/index.js';
 import {
+  getUsersCount,
   loginUser,
   logoutUser,
   refreshUsersSession,
@@ -120,5 +121,15 @@ export const updateUserController = async (req, res) => {
     status: 200,
     message: 'Successfully updated a user!',
     data: updatedUser,
+  });
+};
+
+export const getUsersCountController = async (req, res) => {
+  const count = await getUsersCount();
+
+  res.status(200).json({
+    status: 200,
+    message: 'Successfully retrieved user count!',
+    data: count,
   });
 };

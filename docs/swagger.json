@@ -464,6 +464,11 @@
                     "type": "string",
                     "example": "John Doe"
                   },
+                  "avatar": {
+                    "description": "User's avatar",
+                    "type": "string",
+                    "format": "binary"
+                  },
                   "gender": {
                     "description": "User's gender",
                     "type": "string",
@@ -565,6 +570,48 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/users/count": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "getUsersCount",
+        "summary": "Retrieve the Count of Registered Users",
+        "description": "Retrieves the total count of registered users. On success, a 200 status code is returned with user count.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved users count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully retrieved user count!"
+                    },
+                    "data": {
+                      "type": "number",
+                      "example": 100
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1061,6 +1108,11 @@
             "example": "john.doe",
             "default": "Local part of email address"
           },
+          "avatar": {
+            "description": "Link to user's avatar",
+            "type": "string",
+            "example": "https://res.cloudinary.com/dxwxmlz4k/image/upload/v1736940725/oahu8xtkfimt793xz1ce.jpg"
+          },
           "gender": {
             "description": "User's gender",
             "type": "string",
@@ -1101,7 +1153,7 @@
         ],
         "properties": {
           "_id": {
-            "description": "Water consumption record id",
+            "description": "Backend-generated unique id",
             "type": "string",
             "example": "677ef8ffd965e35fbbcc5121"
           },

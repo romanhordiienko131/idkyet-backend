@@ -8,6 +8,7 @@ import {
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import {
   getCurrentUserController,
+  getUsersCountController,
   logoutUserController,
   refreshUsersSessionController,
   registerUserController,
@@ -44,5 +45,7 @@ router.patch(
   validateBody(updateUserSchema),
   ctrlWrapper(updateUserController),
 );
+
+router.get('/count', ctrlWrapper(getUsersCountController));
 
 export default router;
