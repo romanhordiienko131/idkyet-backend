@@ -15,6 +15,7 @@ import {
 } from '../controllers/users.js';
 import { loginUserController } from '../controllers/users.js';
 import { authenticate } from '../middlewares/authenticate.js';
+import { upload } from '../middlewares/multer.js';
 
 const router = Router();
 
@@ -39,6 +40,7 @@ router.get('/current', authenticate, ctrlWrapper(getCurrentUserController));
 router.patch(
   '/update',
   authenticate,
+  upload.single('avatar'),
   validateBody(updateUserSchema),
   ctrlWrapper(updateUserController),
 );

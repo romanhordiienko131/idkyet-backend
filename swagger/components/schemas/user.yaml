@@ -15,6 +15,10 @@ properties:
     type: string
     example: john.doe
     default: Local part of email address
+  avatar:
+    description: Link to user's avatar
+    type: string
+    example: https://res.cloudinary.com/dxwxmlz4k/image/upload/v1736940725/oahu8xtkfimt793xz1ce.jpg
   gender:
     description: User's gender
     type: string

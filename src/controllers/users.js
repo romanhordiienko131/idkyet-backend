@@ -6,6 +6,9 @@ import {
   registerUser,
   updateUser,
 } from '../services/users.js';
+import { getEnvVar } from '../utils/getEnvVar.js';
+import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
+import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 
 export const registerUserController = async (req, res) => {
   const credentials = {
@@ -96,8 +99,22 @@ export const getCurrentUserController = (req, res) => {
 export const updateUserController = async (req, res) => {
   const user = req.user;
   const userId = user._id;
+  const avatar = req.file;
 
-  const updatedUser = await updateUser(userId, req.body);
+  let avatarUrl;
+
+  if (avatar) {
+    if (getEnvVar('ENABLE_CLOUDINARY') === 'true') {
+      avatarUrl = await saveFileToCloudinary(avatar);
+    } else {
+      avatarUrl = await saveFileToUploadDir(avatar);
+    }
+  }
+
+  const updatedUser = await updateUser(userId, {
+    ...req.body,
+    avatar: avatarUrl,
+  });
 
   res.status(200).json({
     status: 200,
