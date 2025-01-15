@@ -15,6 +15,10 @@ requestBody:
             description: User's name
             type: string
             example: 'John Doe'
+          avatar:
+            description: User's avatar
+            type: string
+            format: binary
           gender:
             description: User's gender
             type: string
