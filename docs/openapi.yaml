@@ -32,6 +32,9 @@ paths:
   /users/update:
     patch:
       $ref: ../swagger/paths/users/update/patch.yaml
+  /users/count:
+    get:
+      $ref: ../swagger/paths/users/count/get.yaml
   /water:
     post:
       $ref: ../swagger/paths/water/post.yaml

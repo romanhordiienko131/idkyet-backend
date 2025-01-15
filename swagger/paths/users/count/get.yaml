@@ -1,0 +1,27 @@
+tags:
+  - Users
+operationId: getUsersCount
+summary: Retrieve the Count of Registered Users
+description: Retrieves the total count of registered users. On success, a 200 status code is returned with user count.
+security: []
+responses:
+  '200':
+    description: Successfully retrieved users count
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully retrieved user count!
+            data:
+              type: number
+              example: 100

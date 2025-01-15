@@ -107,3 +107,7 @@ export const updateUser = async (userId, payload) => {
 
   return updatedUser;
 };
+
+export const getUsersCount = async () => {
+  return await UsersCollection.countDocuments();
+};
